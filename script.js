@@ -75,7 +75,7 @@ var M = {
 		//M.ctx = M.c.getContext( '2d' );
 		M.c.width = M.WIDTH;
 		M.c.height = M.HEIGHT;
-		//M.ctx.shadowBlur = 0;
+		M.ctx.shadowBlur = 0;
 		M.ctx.fillStyle = '#000';
 		M.ctx.fillRect(0, 0, M.WIDTH, M.HEIGHT);
 		M.ctx.font = M.font;
