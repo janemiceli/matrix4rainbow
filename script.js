@@ -9,8 +9,8 @@ var M = {
 		COL_WIDTH: 20,
 		COL_HEIGHT: 25,
 		VELOCITY_PARAMS: {
-			min: 4,
-			max: 8
+			min: 1,
+			max: 5
 		},
 		CODE_LENGTH_PARAMS: {
 			min: 11,
@@ -119,9 +119,8 @@ var M = {
 			M.codes[column][0].position = {'x': (column * M.settings.COL_WIDTH), 'y': 0};
 			M.codes[column][0].velocity = codeVelocity;
 			M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
-      var customMessages = "JANEMICELI";
       var reverseString =customMessages.split('').reverse().join('');
-      if (codeLength==11){
+      if (codeLength==customMessages.length){
       for (var i = 1; i <= codeLength; i++) 
       {
          M.codes[column][i]=reverseString.substring(i-1, i);
