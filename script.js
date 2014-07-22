@@ -71,13 +71,13 @@ var M = {
   init: function () {
 		var c= document.getElementById('canvas');
 		M.c = c;
-		M.ctx = c.getContext('2d');
+		//M.ctx = c.getContext('2d');
 		M.c.width = M.WIDTH;
 		M.c.height = M.HEIGHT;
-		M.ctx.shadowBlur = 0;
-		M.ctx.fillStyle = '#000';
-		M.ctx.fillRect(0, 0, M.WIDTH, M.HEIGHT);
-		M.ctx.font = M.font;
+		//M.ctx.shadowBlur = 0;
+		//M.ctx.fillStyle = '#000';
+		//M.ctx.fillRect(0, 0, M.WIDTH, M.HEIGHT);
+		//M.ctx.font = M.font;
 		M.COLUMNS = Math.ceil(M.WIDTH / M.settings.COL_WIDTH);
 		for (var i = 0; i < M.COLUMNS; i++) {
 			M.codes[i] = [];
@@ -93,7 +93,7 @@ var M = {
 		window.onresize = function () {
 			window.cancelAnimationFrame(M.animation);
 			M.animation = null;
-			M.ctx.clearRect(0, 0, M.WIDTH, M.HEIGHT);
+			//M.ctx.clearRect(0, 0, M.WIDTH, M.HEIGHT);
 			M.codesCounter = 0;
 			M.ctx2.clearRect(0, 0, M.WIDTH, M.HEIGHT);
 			M.WIDTH = window.innerWidth;
@@ -295,22 +295,6 @@ var M = {
 	}
 };
 
-function eventListenerz() {
-	var controlToggles = document.getElementsByClassName('toggle-info');
-	var controls = document.getElementById('info');
-	var snapshotBtn = document.getElementById('snapshot');
-
-	function toggleControls(e) {
-		e.preventDefault();
-		controls.className = controls.className === 'closed' ? '' : 'closed';
-	}
-
-	for (var j = 0; j < 2; j++) {
-		controlToggles[j].addEventListener('click', toggleControls, false);
-	}
-	snapshotBtn.addEventListener('click', M.snapshot, false);
-}
 window.onload = function() {
 	M.init();
-	//eventListenerz();
 };
