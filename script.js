@@ -1,11 +1,4 @@
-﻿/*
-  Matrix code rain
-  Demo write up here: http://neilcarpenter.com/labs/matrix-rain
-  Uses matrix font: http://www.dafont.com/matrix-code-nfi.font
-  and stats.js: https://github.com/mrdoob/stats.js/
-*/
-
-(function() {
+﻿(function() {
     var lastTime = 0;
     var vendors = ['ms', 'moz', 'webkit', 'o'];
     for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
@@ -278,12 +271,6 @@ var M = {
 	},
 	assignColumn: function() {
 		var randomColumn = M.randomFromInterval(0, (M.COLUMNS - 1));
-
-		if (M.codes[randomColumn][0].open) {
-			M.codes[randomColumn][0].open = false;
-		} else {
-			return false;
-		}
 		return randomColumn;
 	},
 	randomFromInterval: function(from, to) {
