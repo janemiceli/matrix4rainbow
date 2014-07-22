@@ -4,7 +4,6 @@
   Uses matrix font: http://www.dafont.com/matrix-code-nfi.font
   and stats.js: https://github.com/mrdoob/stats.js/
 */
-//var customMessages="WAKE UP JANE MICELI";
 
 (function() {
     var lastTime = 0;
@@ -29,7 +28,10 @@
             clearTimeout(id);
         };
 }());
-
+var pinkrain=0;
+var greenrain=104;
+var bluerain=207;
+var colorrain=207;
 var stats = new Stats();
 var M = {
   settings: {
@@ -44,6 +46,8 @@ var M = {
 			max: 20
 		}
 	},
+	rainColor: 207,
+	customMessage: "JANEMICELI",
 	animation: null,
 	c: null,
 	ctx: null,
@@ -65,8 +69,8 @@ var M = {
   createCodeLoop: null,
   codesCounter: 0,
   init: function () {
-		M.c = document.getElementById("canvas");
-		M.ctx = M.c.getContext("2d");
+		M.c = document.getElementById('canvas');
+		M.ctx = M.c.getContext('2d');
 		M.c.width = M.WIDTH;
 		M.c.height = M.HEIGHT;
 		M.ctx.shadowBlur = 0;
@@ -85,8 +89,6 @@ var M = {
 		M.loop();
 		M.createLines();
 		M.createCode();
-		// not doing this, kills CPU
-		// M.swapCharacters();
 		window.onresize = function () {
 			window.cancelAnimationFrame(M.animation);
 			M.animation = null;
@@ -102,19 +104,16 @@ var M = {
 	loop: function () {
 		M.animation = requestAnimationFrame( function(){ M.loop(); } );
 		M.draw();
-
 		stats.update();
 	},
 	
 	draw: function() {
 		var velocity, height, x, y, c, ctx;
-		// slow fade BG colour
 		M.ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
 		M.ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
 		M.ctx.fillRect(0, 0, M.WIDTH, M.HEIGHT);
 		M.ctx.globalCompositeOperation = 'source-over';
 		for (var i = 0; i < M.COLUMNS; i++) {
-			// check member of array isn't undefined at this point
 			if (M.codes[i][0].canvas) {
 				velocity = M.codes[i][0].velocity;
 				height = M.codes[i][0].canvas.height;
@@ -186,6 +185,7 @@ var M = {
 	},
 
 	createCanvii: function(i) {
+		var rainColor= M.rainColor;
 		var codeLen = M.codes[i].length - 1;
 		var canvHeight = codeLen * M.settings.COL_HEIGHT;
 		var velocity = M.codes[i][0].velocity;
@@ -200,26 +200,23 @@ var M = {
 			newCtx.globalCompositeOperation = 'source-over';
 			newCtx.font = '30px matrix-code';
 			if (j < 5) {
-				newCtx.shadowColor = 'hsla(207, 79%, 72%)';
+				newCtx.shadowColor = 'hsla('+rainColor+', 79%, 72%)';
 				newCtx.shadowOffsetX = 0;
 				newCtx.shadowOffsetY = 0;
 				newCtx.shadowBlur = 10;
-        // pink 0
-        // green 104
-        // blue 207
-				newCtx.fillStyle = 'hsla(207, 79%, ' + (100 - (j * 5)) + '%, ' + strength + ')';
+				newCtx.fillStyle = 'hsla('+rainColor+', 79%, ' + (100 - (j * 5)) + '%, ' + strength + ')';
 			} else if (j > (codeLen - 4)) {
 				fadeStrength = j / codeLen;
 				fadeStrength = 1 - fadeStrength;
 				newCtx.shadowOffsetX = 0;
 				newCtx.shadowOffsetY = 0;
 				newCtx.shadowBlur = 0;
-				newCtx.fillStyle = 'hsla(207, 79%, 74%, ' + (fadeStrength + 0.3) + ')';
+				newCtx.fillStyle = 'hsla('+rainColor+', 79%, 74%, ' + (fadeStrength + 0.3) + ')';
 			} else {
 				newCtx.shadowOffsetX = 0;
 				newCtx.shadowOffsetY = 0;
 				newCtx.shadowBlur = 0;
-				newCtx.fillStyle = 'hsla(207, 79%, 74%, ' + strength + ')';
+				newCtx.fillStyle = 'hsla('+rainColor+', 79%, 74%, ' + strength + ')';
 			}
 			newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
 		}
