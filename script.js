@@ -1,4 +1,4 @@
-﻿
+﻿var customMessages = "JANEMICELI";
 var pinkrain=0;
 var greenrain=104;
 var bluerain=207;
@@ -7,18 +7,16 @@ var stats = new Stats();
 var M = {
   settings: {
 		COL_WIDTH: 20,
-		COL_HEIGHT: 21,
+		COL_HEIGHT: 25,
 		VELOCITY_PARAMS: {
 			min: 4,
-			max: 10
+			max: 8
 		},
 		CODE_LENGTH_PARAMS: {
 			min: 11,
 			max: 11
 		}
 	},
-	rainColor: 207,
-	customMessage: "JANEMICELI",
 	animation: null,
 	c: null,
 	ctx: null,
@@ -40,7 +38,7 @@ var M = {
   createCodeLoop: null,
   codesCounter: 0,
   init: function () {
-		M.c = document.getElementById( 'canvas' );
+    M.c = document.getElementById( 'canvas' );
 		M.ctx = M.c.getContext( '2d' );
 		M.c.width = M.WIDTH;
 		M.c.height = M.HEIGHT;
@@ -60,6 +58,8 @@ var M = {
 		M.loop();
 		M.createLines();
 		M.createCode();
+		// not doing this, kills CPU
+		// M.swapCharacters();
 		window.onresize = function () {
 			window.cancelAnimationFrame(M.animation);
 			M.animation = null;
@@ -75,16 +75,19 @@ var M = {
 	loop: function () {
 		M.animation = requestAnimationFrame( function(){ M.loop(); } );
 		M.draw();
+
 		stats.update();
 	},
 	
 	draw: function() {
 		var velocity, height, x, y, c, ctx;
+		// slow fade BG colour
 		M.ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
 		M.ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
 		M.ctx.fillRect(0, 0, M.WIDTH, M.HEIGHT);
 		M.ctx.globalCompositeOperation = 'source-over';
 		for (var i = 0; i < M.COLUMNS; i++) {
+			// check member of array isn't undefined at this point
 			if (M.codes[i][0].canvas) {
 				velocity = M.codes[i][0].velocity;
 				height = M.codes[i][0].canvas.height;
@@ -103,7 +106,10 @@ var M = {
 	},
 
 	createCode: function() {
-		if (M.codesCounter > M.COLUMNS) { clearTimeout(M.createCodeLoop); return;}
+		if (M.codesCounter > M.COLUMNS) {
+			clearTimeout(M.createCodeLoop);
+			return;
+		}
 		var randomInterval = M.randomFromInterval(0, 100);
 		var column = M.assignColumn();
 		if (column) {			
@@ -115,26 +121,33 @@ var M = {
 			M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
       var customMessages = "JANEMICELI";
       var reverseString =customMessages.split('').reverse().join('');
-      if (codeLength==11)
-	  {
-       M.codes[column][i]=reverseString.substring(i-1, i);
+      if (codeLength==11){
+      for (var i = 1; i <= codeLength; i++) 
+      {
+         M.codes[column][i]=reverseString.substring(i-1, i);
+        //	var newLetter = M.randomFromInterval(0, (lettersLength - 1));
+        //	M.codes[column][i] = M.letters[newLetter];
+        
+      }
       }
       else
       { 
-	    for (var i = 1; i <= codeLength; i++) 
-        {
-      	 var newLetter = M.randomFromInterval(0, (lettersLength - 1));
-         M.codes[column][i] = M.letters[newLetter];
-        }
+     
+		 for (var i = 1; i <= codeLength; i++) 
+      {
+      	var newLetter = M.randomFromInterval(0, (lettersLength - 1));
+        M.codes[column][i] = M.letters[newLetter];
+         }
       }
-	  M.createCanvii(column);
-	  M.codesCounter++;
-	}
-	M.createCodeLoop = setTimeout(M.createCode, randomInterval);
+
+      
+			M.createCanvii(column);
+			M.codesCounter++;
+		}
+		M.createCodeLoop = setTimeout(M.createCode, randomInterval);
 	},
 
 	createCanvii: function(i) {
-		var rainColor= M.rainColor;
 		var codeLen = M.codes[i].length - 1;
 		var canvHeight = codeLen * M.settings.COL_HEIGHT;
 		var velocity = M.codes[i][0].velocity;
@@ -149,23 +162,26 @@ var M = {
 			newCtx.globalCompositeOperation = 'source-over';
 			newCtx.font = '30px matrix-code';
 			if (j < 5) {
-				newCtx.shadowColor = 'hsla('+rainColor+', 79%, 72%)';
+				newCtx.shadowColor = 'hsla(207, 79%, 72%)';
 				newCtx.shadowOffsetX = 0;
 				newCtx.shadowOffsetY = 0;
 				newCtx.shadowBlur = 10;
-				newCtx.fillStyle = 'hsla('+rainColor+', 79%, ' + (100 - (j * 5)) + '%, ' + strength + ')';
+        // pink 0
+        // gren 104
+        // blue 207
+				newCtx.fillStyle = 'hsla(207, 79%, ' + (100 - (j * 5)) + '%, ' + strength + ')';
 			} else if (j > (codeLen - 4)) {
 				fadeStrength = j / codeLen;
 				fadeStrength = 1 - fadeStrength;
 				newCtx.shadowOffsetX = 0;
 				newCtx.shadowOffsetY = 0;
 				newCtx.shadowBlur = 0;
-				newCtx.fillStyle = 'hsla('+rainColor+', 79%, 74%, ' + (fadeStrength + 0.3) + ')';
+				newCtx.fillStyle = 'hsla(207, 79%, 74%, ' + (fadeStrength + 0.3) + ')';
 			} else {
 				newCtx.shadowOffsetX = 0;
 				newCtx.shadowOffsetY = 0;
 				newCtx.shadowBlur = 0;
-				newCtx.fillStyle = 'hsla('+rainColor+', 79%, 74%, ' + strength + ')';
+				newCtx.fillStyle = 'hsla(207, 79%, 74%, ' + strength + ')';
 			}
 			newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
 		}
@@ -225,17 +241,12 @@ var M = {
 		}
 		M.ctx2.stroke();
 	},
-		randomFromInterval: function(from, to) {
-		return Math.floor(Math.random() * (to - from+ 1 ) + from);
-	},
 	assignColumn: function() {
 		var randomColumn = M.randomFromInterval(0, (M.COLUMNS - 1));
-		if ( M.codes[randomColumn][0].open) {
-			M.codes[randomColumn][0].open = false;
-		} else {
-			return false;
-		}
 		return randomColumn;
+	},
+	randomFromInterval: function(from, to) {
+		return Math.floor(Math.random() * (to - from+ 1 ) + from);
 	},
 	snapshot: function() {
 		window.open(M.c.toDataURL());
