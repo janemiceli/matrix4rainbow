@@ -120,7 +120,7 @@ var M = {
 			M.codes[column][0].velocity = codeVelocity;
 			M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
       var reverseString =customMessages.split('').reverse().join('');
-      if (codeLength==customMessages.length){
+      if (codeLength==customMessages.length+1){
       for (var i = 1; i <= codeLength; i++) 
       {
          M.codes[column][i]=reverseString.substring(i-1, i);
