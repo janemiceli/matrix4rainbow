@@ -1,4 +1,8 @@
 ﻿var customMessages = "GIRL DEVELOP IT";
+var customMessages1 = "BOISE";
+var customMessages2 = "SENSUS";
+var customMessages3 = "DISTRIBUTION AUTOMATION";
+var customMessages4 = "JANEMICELI";
 var pinkrain=0;
 var greenrain=104;
 var bluerain=207;
@@ -119,10 +123,38 @@ var M = {
 			M.codes[column][0].position = {'x': (column * M.settings.COL_WIDTH), 'y': 0};
 			M.codes[column][0].velocity = codeVelocity;
 			M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
-      var reverseString =customMessages.split('').reverse().join('');
+      var reverseString ="";
       if (codeLength==customMessages.length+1){
       for (var i = 1; i <= codeLength; i++) 
       {
+	     reverseString =customMessages.split('').reverse().join('');
+         M.codes[column][i]=reverseString.substring(i-1, i);
+      }
+      }else if(codeLength==customMessages1.length+1){
+      for (var i = 1; i <= codeLength; i++) 
+      {
+	     reverseString =customMessages1.split('').reverse().join('');
+         M.codes[column][i]=reverseString.substring(i-1, i);
+      }
+      }
+	  else if(codeLength==customMessages2.length+1){
+      for (var i = 1; i <= codeLength; i++) 
+      {
+	     reverseString =customMessages2.split('').reverse().join('');
+         M.codes[column][i]=reverseString.substring(i-1, i);
+      }
+      }
+	  else if(codeLength==customMessages3.length+1){
+      for (var i = 1; i <= codeLength; i++) 
+      {
+	     reverseString =customMessages3.split('').reverse().join('');
+         M.codes[column][i]=reverseString.substring(i-1, i);
+      }
+      }
+	  else if(codeLength==customMessages4.length+1){
+      for (var i = 1; i <= codeLength; i++) 
+      {
+	     reverseString =customMessages4.split('').reverse().join('');
          M.codes[column][i]=reverseString.substring(i-1, i);
       }
       }
