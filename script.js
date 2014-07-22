@@ -116,8 +116,9 @@ var M = {
 		}
 		var randomInterval = M.randomFromInterval(0, 100);
 		var column = M.assignColumn();
+		var codeLength =0;
 		if (column) {			
-			var codeLength = M.randomFromInterval(M.settings.CODE_LENGTH_PARAMS.min, M.settings.CODE_LENGTH_PARAMS.max);
+			codeLength = M.randomFromInterval(M.settings.CODE_LENGTH_PARAMS.min, M.settings.CODE_LENGTH_PARAMS.max);
 			var codeVelocity = (Math.random() * (M.settings.VELOCITY_PARAMS.max - M.settings.VELOCITY_PARAMS.min)) + M.settings.VELOCITY_PARAMS.min;
 			var lettersLength = M.letters.length;
 			M.codes[column][0].position = {'x': (column * M.settings.COL_WIDTH), 'y': 0};
