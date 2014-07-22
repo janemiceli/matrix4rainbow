@@ -70,7 +70,7 @@ var M = {
 		M.ctx.fillStyle = '#000';
 		M.ctx.fillRect(0, 0, M.WIDTH, M.HEIGHT);
 		M.ctx.font = M.font;
-		COLUMNS = Math.ceil(M.WIDTH / M.settings.COL_WIDTH);
+		M.COLUMNS = Math.ceil(M.WIDTH / M.settings.COL_WIDTH);
 		for (var i = 0; i < M.COLUMNS; i++) {
 			M.codes[i] = [];
 			M.codes[i][0] = {
