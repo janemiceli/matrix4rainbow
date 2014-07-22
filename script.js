@@ -69,15 +69,14 @@ var M = {
   createCodeLoop: null,
   codesCounter: 0,
   init: function () {
-		var c= document.getElementById('canvas');
-		M.c = c;
-		//M.ctx = c.getContext('2d');
+		this.c = document.getElementById('canvas');
+		this.ctx = this.c.getContext('2d');
 		M.c.width = M.WIDTH;
 		M.c.height = M.HEIGHT;
-		//M.ctx.shadowBlur = 0;
-		//M.ctx.fillStyle = '#000';
-		//M.ctx.fillRect(0, 0, M.WIDTH, M.HEIGHT);
-		//M.ctx.font = M.font;
+		M.ctx.shadowBlur = 0;
+		M.ctx.fillStyle = '#000';
+		M.ctx.fillRect(0, 0, M.WIDTH, M.HEIGHT);
+		M.ctx.font = M.font;
 		M.COLUMNS = Math.ceil(M.WIDTH / M.settings.COL_WIDTH);
 		for (var i = 0; i < M.COLUMNS; i++) {
 			M.codes[i] = [];
@@ -93,7 +92,7 @@ var M = {
 		window.onresize = function () {
 			window.cancelAnimationFrame(M.animation);
 			M.animation = null;
-			//M.ctx.clearRect(0, 0, M.WIDTH, M.HEIGHT);
+			M.ctx.clearRect(0, 0, M.WIDTH, M.HEIGHT);
 			M.codesCounter = 0;
 			M.ctx2.clearRect(0, 0, M.WIDTH, M.HEIGHT);
 			M.WIDTH = window.innerWidth;
