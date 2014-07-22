@@ -66,7 +66,7 @@ var M = {
   codesCounter: 0,
   init: function () {
 		M.c = document.getElementById("canvas");
-		var ctx = c.getContext("2d");
+		M.ctx = M.c.getContext("2d");
 		M.c.width = M.WIDTH;
 		M.c.height = M.HEIGHT;
 		M.ctx.shadowBlur = 0;
