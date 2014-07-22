@@ -69,8 +69,9 @@ var M = {
   createCodeLoop: null,
   codesCounter: 0,
   init: function () {
-		M.c = document.getElementById('canvas');
-		M.ctx = M.c.getContext('2d');
+		var c= document.getElementById('canvas');
+		M.c = c;
+		M.ctx = c.getContext('2d');
 		M.c.width = M.WIDTH;
 		M.c.height = M.HEIGHT;
 		M.ctx.shadowBlur = 0;
