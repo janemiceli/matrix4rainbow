@@ -135,20 +135,20 @@ var M = {
 			M.codes[column][0].position = {'x': (column * M.settings.COL_WIDTH), 'y': 0};
 			M.codes[column][0].velocity = codeVelocity;
 			M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
-      var customMessages = "JANEMICELI";
-      var reverseString =customMessages.split('').reverse().join('');
-      if (codeLength==11)
-	  {
-      for (var i = 1; i <= codeLength; i++) { M.codes[column][i]=reverseString.substring(i-1, 1); }
-      }
-      else
-      { 
+      //var customMessages = "JANEMICELI";
+      //var reverseString =customMessages.split('').reverse().join('');
+      //if (codeLength==11)
+	  //{
+      //for (var i = 1; i <= codeLength; i++) { M.codes[column][i]=reverseString.substring(i-1, 1); }
+      //}
+      //else
+      //{ 
 	    for (var i = 1; i <= codeLength; i++) 
         {
       	 var newLetter = M.randomFromInterval(0, (lettersLength - 1));
          M.codes[column][i] = M.letters[newLetter];
         }
-      }
+      //}
 	  M.createCanvii(column);
 	  M.codesCounter++;
 	}
