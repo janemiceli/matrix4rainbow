@@ -261,12 +261,12 @@ var M = {
 	},
 	assignColumn: function() {
 		var randomColumn = M.randomFromInterval(0, (M.COLUMNS - 1));
-
+		if (typeof document.getElementsByName("M.codes[randomColumn]")[0] != 'undefined'){
 		if (M.codes[randomColumn][0].open) {
 			M.codes[randomColumn][0].open = false;
 		} else {
 			return false;
-		}
+		}}
 		return randomColumn;
 	},
 	snapshot: function() {
