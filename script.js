@@ -2,7 +2,7 @@
 var pinkrain=0;
 var greenrain=104;
 var bluerain=207;
-var colorrain=207;
+var colorrain=bluerain;
 var stats = new Stats();
 var M = {
   settings: {
@@ -162,26 +162,23 @@ var M = {
 			newCtx.globalCompositeOperation = 'source-over';
 			newCtx.font = '30px matrix-code';
 			if (j < 5) {
-				newCtx.shadowColor = 'hsla(207, 79%, 72%)';
+				newCtx.shadowColor = 'hsla('+colorrain+', 79%, 72%)';
 				newCtx.shadowOffsetX = 0;
 				newCtx.shadowOffsetY = 0;
 				newCtx.shadowBlur = 10;
-        // pink 0
-        // gren 104
-        // blue 207
-				newCtx.fillStyle = 'hsla(207, 79%, ' + (100 - (j * 5)) + '%, ' + strength + ')';
+				newCtx.fillStyle = 'hsla('+colorrain+', 79%, ' + (100 - (j * 5)) + '%, ' + strength + ')';
 			} else if (j > (codeLen - 4)) {
 				fadeStrength = j / codeLen;
 				fadeStrength = 1 - fadeStrength;
 				newCtx.shadowOffsetX = 0;
 				newCtx.shadowOffsetY = 0;
 				newCtx.shadowBlur = 0;
-				newCtx.fillStyle = 'hsla(207, 79%, 74%, ' + (fadeStrength + 0.3) + ')';
+				newCtx.fillStyle = 'hsla('+colorrain+', 79%, 74%, ' + (fadeStrength + 0.3) + ')';
 			} else {
 				newCtx.shadowOffsetX = 0;
 				newCtx.shadowOffsetY = 0;
 				newCtx.shadowBlur = 0;
-				newCtx.fillStyle = 'hsla(207, 79%, 74%, ' + strength + ')';
+				newCtx.fillStyle = 'hsla('+colorrain+', 79%, 74%, ' + strength + ')';
 			}
 			newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
 		}
