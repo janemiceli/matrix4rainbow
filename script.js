@@ -13,7 +13,7 @@ var M = {
 			max: 5
 		},
 		CODE_LENGTH_PARAMS: {
-			min: 11,
+			min: 10,
 			max: 11
 		}
 	},
@@ -124,22 +124,16 @@ var M = {
       for (var i = 1; i <= codeLength; i++) 
       {
          M.codes[column][i]=reverseString.substring(i-1, i);
-        //	var newLetter = M.randomFromInterval(0, (lettersLength - 1));
-        //	M.codes[column][i] = M.letters[newLetter];
-        
       }
       }
       else
       { 
-     
 		 for (var i = 1; i <= codeLength; i++) 
       {
       	var newLetter = M.randomFromInterval(0, (lettersLength - 1));
         M.codes[column][i] = M.letters[newLetter];
          }
       }
-
-      
 			M.createCanvii(column);
 			M.codesCounter++;
 		}
