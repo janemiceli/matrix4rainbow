@@ -125,10 +125,7 @@ var M = {
 	},
 
 	createCode: function() {
-		if (M.codesCounter > M.COLUMNS) {
-			clearTimeout(M.createCodeLoop);
-			return;
-		}
+		if (M.codesCounter > M.COLUMNS) { clearTimeout(M.createCodeLoop); return;}
 		var randomInterval = M.randomFromInterval(0, 100);
 		var column = M.assignColumn();
 		if (column) {			
@@ -142,26 +139,20 @@ var M = {
       var reverseString =customMessages.split('').reverse().join('');
       if (codeLength==11)
 	  {
-      for (var i = 1; i <= codeLength; i++) 
-        {
-        M.codes[column][i]=reverseString.substring(i-1, 1);
-        }
+      for (var i = 1; i <= codeLength; i++) { M.codes[column][i]=reverseString.substring(i-1, 1); }
       }
       else
       { 
-     
-		 for (var i = 1; i <= codeLength; i++) 
-      {
-      	var newLetter = M.randomFromInterval(0, (lettersLength - 1));
-        M.codes[column][i] = M.letters[newLetter];
-         }
+	    for (var i = 1; i <= codeLength; i++) 
+        {
+      	 var newLetter = M.randomFromInterval(0, (lettersLength - 1));
+         M.codes[column][i] = M.letters[newLetter];
+        }
       }
-
-      
-			M.createCanvii(column);
-			M.codesCounter++;
-		}
-		M.createCodeLoop = setTimeout(M.createCode, randomInterval);
+	  M.createCanvii(column);
+	  M.codesCounter++;
+	}
+	M.createCodeLoop = setTimeout(M.createCode, randomInterval);
 	},
 
 	createCanvii: function(i) {
@@ -261,12 +252,11 @@ var M = {
 	},
 	assignColumn: function() {
 		var randomColumn = M.randomFromInterval(0, (M.COLUMNS - 1));
-		if (typeof document.getElementsByName("M.codes[randomColumn]")[0] != 'undefined'){
-		if (M.codes[randomColumn][0].open) {
+		if (typeof document.getElementsByName("M.codes[randomColumn]")[0] != 'undefined'&& M.codes[randomColumn][0].open) {
 			M.codes[randomColumn][0].open = false;
 		} else {
 			return false;
-		}}
+		}
 		return randomColumn;
 	},
 	snapshot: function() {
