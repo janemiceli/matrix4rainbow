@@ -140,25 +140,12 @@ var M = {
 			M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
       var customMessages = "JANEMICELI";
       var reverseString =customMessages.split('').reverse().join('');
-      if (codeLength==11){
+      if (codeLength==11)
+	  {
       for (var i = 1; i <= codeLength; i++) 
-      {
-          if    (i==1) {M.codes[column][1]=reverseString.substring(i-1, 1);}
-        else if (i==2) {M.codes[column][2]=reverseString[1];}
-        else if (i==3) {M.codes[column][3]=reverseString[2];}
-        else if (i==4) {M.codes[column][4]=reverseString[3];}
-		else if (i==5) {M.codes[column][5]=reverseString[4];}
-        else if (i==6) {M.codes[column][6]=reverseString[5];}
-        else if (i==7) {M.codes[column][7]=reverseString[6];}
-        else if (i==8) {M.codes[column][8]=reverseString[7];}
-        else if (i==9) {M.codes[column][9]=reverseString[8];}
-        else if (i==10) {M.codes[column][10]=reverseString[9];}
-        else
-        {	
-        	var newLetter = M.randomFromInterval(0, (lettersLength - 1));
-        	M.codes[column][i] = M.letters[newLetter];
+        {
+        M.codes[column][i]=reverseString.substring(i-1, 1);
         }
-      }
       }
       else
       { 
@@ -269,12 +256,18 @@ var M = {
 		}
 		M.ctx2.stroke();
 	},
+		randomFromInterval: function(from, to) {
+		return Math.floor(Math.random() * (to - from+ 1 ) + from);
+	},
 	assignColumn: function() {
 		var randomColumn = M.randomFromInterval(0, (M.COLUMNS - 1));
+
+		if (M.codes[randomColumn][0].open) {
+			M.codes[randomColumn][0].open = false;
+		} else {
+			return false;
+		}
 		return randomColumn;
-	},
-	randomFromInterval: function(from, to) {
-		return Math.floor(Math.random() * (to - from+ 1 ) + from);
 	},
 	snapshot: function() {
 		window.open(M.c.toDataURL());
