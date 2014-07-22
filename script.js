@@ -30,20 +30,14 @@
         };
 }());
 
-// stats
 var stats = new Stats();
-//stats.setMode(0);
-//stats.domElement.style.position = 'absolute';
-//stats.domElement.style.left = '0px';
-//stats.domElement.style.top = '0px';
-//document.body.appendChild( stats.domElement );
 var M = {
   settings: {
 		COL_WIDTH: 20,
 		COL_HEIGHT: 25,
 		VELOCITY_PARAMS: {
 			min: 4,
-			max: 25
+			max: 10
 		},
 		CODE_LENGTH_PARAMS: {
 			min: 5,
@@ -71,8 +65,8 @@ var M = {
   createCodeLoop: null,
   codesCounter: 0,
   init: function () {
-		M.c = document.getElementById( 'canvas' );
-		M.ctx=null;// = M.c.getContext( '2d' );
+		M.c = document.getElementById("canvas");
+		var ctx = c.getContext("2d");
 		M.c.width = M.WIDTH;
 		M.c.height = M.HEIGHT;
 		M.ctx.shadowBlur = 0;
@@ -161,7 +155,7 @@ var M = {
         else if (i==2) {M.codes[column][2]=reverseString[1];}
         else if (i==3) {M.codes[column][3]=reverseString[2];}
         else if (i==4) {M.codes[column][4]=reverseString[3];}
-		   else if (i==5) {M.codes[column][5]=reverseString[4];}
+		else if (i==5) {M.codes[column][5]=reverseString[4];}
         else if (i==6) {M.codes[column][6]=reverseString[5];}
         else if (i==7) {M.codes[column][7]=reverseString[6];}
         else if (i==8) {M.codes[column][8]=reverseString[7];}
@@ -211,7 +205,7 @@ var M = {
 				newCtx.shadowOffsetY = 0;
 				newCtx.shadowBlur = 10;
         // pink 0
-        // gren 104
+        // green 104
         // blue 207
 				newCtx.fillStyle = 'hsla(207, 79%, ' + (100 - (j * 5)) + '%, ' + strength + ')';
 			} else if (j > (codeLen - 4)) {
