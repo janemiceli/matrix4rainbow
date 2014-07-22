@@ -1,8 +1,8 @@
-﻿var customMessages = "JANEMICELI";
+﻿var customMessages = "GIRL DEVELOP IT";
 var pinkrain=0;
 var greenrain=104;
 var bluerain=207;
-var colorrain=bluerain;
+var colorrain=pinkrain;
 var stats = new Stats();
 var M = {
   settings: {
@@ -14,7 +14,7 @@ var M = {
 		},
 		CODE_LENGTH_PARAMS: {
 			min: 10,
-			max: 11
+			max: 20
 		}
 	},
 	animation: null,
