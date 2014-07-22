@@ -252,7 +252,7 @@ var M = {
 	},
 	assignColumn: function() {
 		var randomColumn = M.randomFromInterval(0, (M.COLUMNS - 1));
-		if (M.codes[randomColumn] != 'undefined'&& M.codes[randomColumn][0].open) {
+		if (M.codes[randomColumn] != undefined && M.codes[randomColumn][0].open) {
 			M.codes[randomColumn][0].open = false;
 		} else {
 			return false;
