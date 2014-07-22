@@ -69,14 +69,14 @@ var M = {
   createCodeLoop: null,
   codesCounter: 0,
   init: function () {
-		c = document.getElementById('canvas');
-		ctx = c.getContext('2d');
-		c.width = M.WIDTH;
-		c.height = M.HEIGHT;
-		ctx.shadowBlur = 0;
-		ctx.fillStyle = '#000';
-		ctx.fillRect(0, 0, M.WIDTH, M.HEIGHT);
-		ctx.font = M.font;
+		M.c = document.getElementById('canvas');
+		M.ctx = c.getContext('2d');
+		M.c.width = M.WIDTH;
+		M.c.height = M.HEIGHT;
+		M.ctx.shadowBlur = 0;
+		M.ctx.fillStyle = '#000';
+		M.ctx.fillRect(0, 0, M.WIDTH, M.HEIGHT);
+		M.ctx.font = M.font;
 		COLUMNS = Math.ceil(M.WIDTH / M.settings.COL_WIDTH);
 		for (var i = 0; i < M.COLUMNS; i++) {
 			M.codes[i] = [];
