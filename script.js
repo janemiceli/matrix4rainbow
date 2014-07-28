@@ -1,4 +1,5 @@
-﻿/*jslint browser: true*/
+﻿<!doctype html>
+/*jslint browser: true*/-
 /*global Stats: false */
 
 var customMessages = "GIRL DEVELOP IT";
