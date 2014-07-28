@@ -39,7 +39,7 @@ var M = {
         codesCounter: 0,
         init: function () {
             "use strict";
-            var el = document.createElement('canvas'), G_vmlCanvasManager; 
+            var el = document.createElement('canvas');
             G_vmlCanvasManager.initElement(el);
             var ctx = el.getContext('2d');
             M.c = document.getElementById('canvas');
