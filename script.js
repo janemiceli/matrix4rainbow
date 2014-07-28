@@ -73,8 +73,8 @@ var M = {
         },
         loop: function () {
             "use strict";
-            var requestAnimationFrame = function () { M.loop(); };
-            M.animation = requestAnimationFrame();
+            //var requestAnimationFrame = function () { M.loop(); };
+            M.animation = requestAnimationFrame(function () { M.loop(); });
             M.draw();
             stats.update();
         },
