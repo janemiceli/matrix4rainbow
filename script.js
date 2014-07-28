@@ -39,8 +39,11 @@ var M = {
         codesCounter: 0,
         init: function () {
             "use strict";
+            var el = document.createElement('canvas');
+            G_vmlCanvasManager.initElement(el);
+            var ctx = el.getContext('2d');
             M.c = document.getElementById('canvas');
-            M.ctx = M.c.getContext('2d');
+            M.ctx = ctx;
             M.c.width = M.WIDTH;
             M.c.height = M.HEIGHT;
             M.ctx.shadowBlur = 0;
