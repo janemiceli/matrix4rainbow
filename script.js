@@ -9,8 +9,8 @@ var customMessages4 = "JANEMICELI";
 var pinkrain = 0;
 var greenrain = 104;
 var bluerain = 207;
-var colorrain = pinkrain;
-var stats = new Stats();
+var purplerain = 255;
+var colorrain = bluerain;
 var M = {
         settings: {
             COL_WIDTH: 20,
@@ -39,7 +39,13 @@ var M = {
         codesCounter: 0,
         init: function () {
             "use strict";
-            M.c = document.getElementById('canvas');
+            //M.c = document.getElementById('canvas');
+			//M.c = document.createElement('canvas');
+            if (typeof(G_vmlCanvasManager) != 'undefined') {
+                M.c = G_vmlCanvasManager.initElement('canvas');
+			} else {
+                M.c = document.getElementById('canvas');
+			}
             M.ctx = M.c.getContext('2d');
             M.c.width = M.WIDTH;
             M.c.height = M.HEIGHT;
@@ -76,7 +82,7 @@ var M = {
             //var requestAnimationFrame = function () { M.loop(); };
             M.animation = requestAnimationFrame(function () { M.loop(); });
             M.draw();
-            stats.update();
+            //stats.update();
         },
         draw: function () {
             "use strict";
@@ -244,3 +250,7 @@ window.onload = function () {
     "use strict";
     M.init();
 };
+window.OnLoad= function () {
+    "use strict";
+    M.init();
+}; 
