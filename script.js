@@ -1,4 +1,4 @@
-﻿<!doctype html>
+﻿
 /*jslint browser: true*/-
 /*global Stats: false */
 
