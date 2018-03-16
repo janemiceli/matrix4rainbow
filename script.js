@@ -1,11 +1,11 @@
 ﻿/*jslint browser: true*/
 /*global Stats: false */
 
-var customMessages = "GIRL DEVELOP IT";
-var customMessages1 = "BOISE";
-var customMessages2 = "SENSUS";
-var customMessages3 = "DISTRIBUTION AUTOMATION";
-var customMessages4 = "JANEMICELI";
+var customMessages = "@janemiceli";
+var customMessages1 = "Devops Days Boise";
+var customMessages2 = "jane@janemiceli.com";
+var customMessages3 = "Site Reliability Engineer";
+var customMessages4 = "Cloud";
 var pinkrain = 0;
 var greenrain = 104;
 var bluerain = 207;
