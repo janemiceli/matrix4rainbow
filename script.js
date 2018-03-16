@@ -1,9 +1,9 @@
 ﻿/*jslint browser: true*/
 /*global Stats: false */
 
-var customMessages = "@janemiceli";
+var customMessages = "Jane Miceli";
 var customMessages1 = "Devops Days Boise";
-var customMessages2 = "jane@janemiceli.com";
+var customMessages2 = "janemiceli.com";
 var customMessages3 = "Site Reliability Engineer";
 var customMessages4 = "Cloud";
 var pinkrain = 0;
