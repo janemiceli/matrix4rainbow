@@ -1,23 +1,21 @@
-﻿/*jslint browser: true*/
-/*global Stats: false */
 
-var customMessages = "Jane Miceli";
-var customMessages1 = "Devops Days Boise";
-var customMessages2 = "janemiceli dot com";
-var customMessages3 = "Site Reliability Engineer";
-var customMessages4 = "Cloud";
+var customMessages = "GIRL DEVELOP IT";
+var customMessages1 = "BOISE";
+var customMessages2 = "SENSUS";
+var customMessages3 = "DISTRIBUTION AUTOMATION";
+var customMessages4 = "JANEMICELI";
 var pinkrain = 0;
 var greenrain = 104;
 var bluerain = 207;
 var purplerain = 255;
-var colorrain = greenrain;
+var colorrain = pinkrain;
 var M = {
         settings: {
             COL_WIDTH: 20,
             COL_HEIGHT: 25,
             VELOCITY_PARAMS: {
                 min: 1,
-                max: 4
+                max: 3
             },
             CODE_LENGTH_PARAMS: {
                 min: 5,
