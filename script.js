@@ -3,7 +3,7 @@
 
 var customMessages = "Jane Miceli";
 var customMessages1 = "Devops Days Boise";
-var customMessages2 = "janemiceli.com";
+var customMessages2 = "janemiceli dot com";
 var customMessages3 = "Site Reliability Engineer";
 var customMessages4 = "Cloud";
 var pinkrain = 0;
@@ -17,7 +17,7 @@ var M = {
             COL_HEIGHT: 25,
             VELOCITY_PARAMS: {
                 min: 1,
-                max: 3
+                max: 4
             },
             CODE_LENGTH_PARAMS: {
                 min: 5,
