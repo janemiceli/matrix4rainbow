@@ -1,14 +1,14 @@
 
-var customMessages = "GIRL DEVELOP IT";
+var customMessages = "DEVOPSDDAYS";
 var customMessages1 = "BOISE";
-var customMessages2 = "SENSUS";
-var customMessages3 = "DISTRIBUTION AUTOMATION";
+var customMessages2 = "MICRON";
+var customMessages3 = "BATTLE WOUNDS";
 var customMessages4 = "JANEMICELI";
 var pinkrain = 0;
 var greenrain = 104;
 var bluerain = 207;
 var purplerain = 255;
-var colorrain = pinkrain;
+var colorrain = greenrain;
 var M = {
         settings: {
             COL_WIDTH: 20,
