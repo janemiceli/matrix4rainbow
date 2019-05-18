@@ -1,14 +1,16 @@
 
-var customMessages = "DEVOPSDDAYS";
-var customMessages1 = "BOISE";
+var customMessages = "DEVOPS BOISE";
+var customMessages1 = "DAVE HARRISON";
 var customMessages2 = "MICRON";
-var customMessages3 = "BATTLE WOUNDS";
-var customMessages4 = "JANEMICELI";
+var customMessages3 = "MICROSOFT";
+var customMessages4 = "JANE MICELI";
 var pinkrain = 0;
 var greenrain = 104;
 var bluerain = 207;
 var purplerain = 255;
-var colorrain = greenrain;
+
+var colorrain = bluerain;
+
 var M = {
         settings: {
             COL_WIDTH: 20,
@@ -31,7 +33,7 @@ var M = {
         HEIGHT: window.innerHeight,
         COLUMNS: null,
         canvii: [],
-        letters: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '$', '+', '-', '*', '/', '=', '%', '"', '\'', '#', '&', '_', '(', ')', ',', '.', ';', ':', '?', '!', '\\', '|', '{', '}', '<', '>', '[', ']', '^ ', '~', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '@', '.'],
+        letters: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '$', '+', '-', '*', '/', '=', '%', '"', '\'', '#', '&', '_', '(', ')', ',', '.', ';', ':', '?', '!', '\\', '|', '{', '}', '<', '>', '[', ']', '^ ', '~', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' '],
         codes: [],
         createCodeLoop: null,
         codesCounter: 0,
