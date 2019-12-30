@@ -1,15 +1,15 @@
 
-var customMessages = "DEVOPS BOISE";
-var customMessages1 = "DAVE HARRISON";
-var customMessages2 = "MICRON";
-var customMessages3 = "MICROSOFT";
+var customMessages = "ADAM";
+var customMessages1 = "CARISSA";
+var customMessages2 = "ROBERT";
+var customMessages3 = "AUSTIN";
 var customMessages4 = "JANE MICELI";
 var pinkrain = 0;
 var greenrain = 104;
 var bluerain = 207;
 var purplerain = 255;
 
-var colorrain = bluerain;
+var colorrain = greenrain;
 
 var M = {
         settings: {
