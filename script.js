@@ -1,8 +1,8 @@
 
-var customMessages = "JANE";
+var customMessages = "ARIA";
 var customMessages1 = "CONNOR";
 var customMessages2 = "TIM";
-var customMessages3 = "ARIA";
+var customMessages3 = "JANE";
 var customMessages4 = "MICELI";
 var pinkrain = 0;
 var greenrain = 104;
