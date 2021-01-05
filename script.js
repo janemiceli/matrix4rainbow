@@ -1,9 +1,9 @@
 
-var customMessages = "ARIA";
+var customMessages = "THE MICELIS";
 var customMessages1 = "CONNOR";
-var customMessages2 = "TIM";
-var customMessages3 = "JANE";
-var customMessages4 = "MICELI";
+var customMessages2 = "ARIA";
+var customMessages3 = "TIM";
+var customMessages4 = "JANE";
 var pinkrain = 0;
 var greenrain = 104;
 var bluerain = 207;
