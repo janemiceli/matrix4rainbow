@@ -4,12 +4,13 @@ var customMessages1 = "CONNOR";
 var customMessages2 = "ARIA";
 var customMessages3 = "TIM";
 var customMessages4 = "JANE";
+var messages = ["JANE", "CONNOR", "ARIA", "TIM", "YOUR BASE ARE BELONG TO US", "THE SYSTEM IS DOWN"]
 var pinkrain = 0;
 var greenrain = 104;
 var bluerain = 207;
 var purplerain = 255;
 
-var colorrain = greenrain;
+var colorrain = pinkrain;
 
 var M = {
         settings: {
@@ -20,8 +21,8 @@ var M = {
                 max: 3
             },
             CODE_LENGTH_PARAMS: {
-                min: 5,
-                max: 25
+                min: 3,
+                max: 30
             }
         },
         animation: null,
@@ -121,6 +122,26 @@ var M = {
                 M.codes[column][0].position = {'x': (column * M.settings.COL_WIDTH), 'y': 0};
                 M.codes[column][0].velocity = codeVelocity;
                 M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
+                
+                
+
+                for (var j = 0; j <= messages.length-1; j++) {
+                    if (codeLength === messages[j].length + 1) {
+                        for (i = 1; i <= codeLength; i = i + 1) {
+                            reverseString = messages[j].split('').reverse().join('');
+                            M.codes[column][i] = reverseString.substring(i - 1, i);
+                        }
+                    }
+                    else {
+                        for (i = 1; i <= codeLength; i = i + 1) {
+                            newLetter = M.randomFromInterval(0, (lettersLength - 1));
+                            M.codes[column][i] = M.letters[newLetter];
+                        }
+                    }
+                }
+
+                /*
+
                 if (codeLength === customMessages.length + 1) {
                     for (i = 1; i <= codeLength; i = i + 1) {
                         reverseString = customMessages.split('').reverse().join('');
@@ -151,7 +172,7 @@ var M = {
                         newLetter = M.randomFromInterval(0, (lettersLength - 1));
                         M.codes[column][i] = M.letters[newLetter];
                     }
-                }
+                }*/
                 M.createCanvii(column);
                 M.codesCounter += 1;
             }
