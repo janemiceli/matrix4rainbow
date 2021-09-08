@@ -123,10 +123,12 @@ var M = {
                 M.codes[column][0].velocity = codeVelocity;
                 M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
                 
-                
+                           /*
+     
 
                 for (var j = 0; j <= messages.length-1; j++) {
-                    if (codeLength === messages[j].length + 1) {
+                    if f
+                    (codeLength === messages[j].length + 1) {
                         for (i = 1; i <= codeLength; i = i + 1) {
                             reverseString = messages[j].split('').reverse().join('');
                             M.codes[column][i] = reverseString.substring(i - 1, i);
@@ -139,8 +141,7 @@ var M = {
                         }
                     }
                 }
-
-                /*
+       }*/
 
                 if (codeLength === customMessages.length + 1) {
                     for (i = 1; i <= codeLength; i = i + 1) {
@@ -172,7 +173,9 @@ var M = {
                         newLetter = M.randomFromInterval(0, (lettersLength - 1));
                         M.codes[column][i] = M.letters[newLetter];
                     }
-                }*/
+                }
+
+                
                 M.createCanvii(column);
                 M.codesCounter += 1;
             }
