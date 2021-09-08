@@ -4,7 +4,7 @@ var customMessages1 = "CONNOR";
 var customMessages2 = "ARIA";
 var customMessages3 = "TIM";
 var customMessages4 = "JANE";
-var messages = ["JANE", "CONNOR", "ARIA", "TIM", "YOUR BASE ARE BELONG TO US", "THE SYSTEM IS DOWN"]
+var messages = ["JANE", "CONNOR", "ARIA", "TIM", "BASE ARE BELONG TO US", "SYSTEM IS DOWN"]
 var pinkrain = 0;
 var greenrain = 104;
 var bluerain = 207;
@@ -123,12 +123,11 @@ var M = {
                 M.codes[column][0].velocity = codeVelocity;
                 M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
                 
-                           /*
+                       
      
-
+ 
                 for (var j = 0; j <= messages.length-1; j++) {
-                    if f
-                    (codeLength === messages[j].length + 1) {
+                    if (codeLength === messages[j].length + 1) {
                         for (i = 1; i <= codeLength; i = i + 1) {
                             reverseString = messages[j].split('').reverse().join('');
                             M.codes[column][i] = reverseString.substring(i - 1, i);
@@ -141,8 +140,8 @@ var M = {
                         }
                     }
                 }
-       }*/
-
+ 
+   /*
                 if (codeLength === customMessages.length + 1) {
                     for (i = 1; i <= codeLength; i = i + 1) {
                         reverseString = customMessages.split('').reverse().join('');
@@ -174,8 +173,8 @@ var M = {
                         M.codes[column][i] = M.letters[newLetter];
                     }
                 }
+      */
 
-                
                 M.createCanvii(column);
                 M.codesCounter += 1;
             }
