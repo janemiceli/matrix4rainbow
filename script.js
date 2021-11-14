@@ -12,7 +12,7 @@ var greenrain = 104;
 var bluerain = 207;
 var purplerain = 255;
 
-var colorrain = greenrain;
+var colorrain = pinkrain;
 
 var M = {
         settings: {
