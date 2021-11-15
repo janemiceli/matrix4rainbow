@@ -1,10 +1,4 @@
-
-var customMessages = "ARIA"
-var customMessages1 = "TIM"
-var customMessages2 = "JANE"
-var customMessages3 = "CONNOR"
-var customMessages4 = "MICELIS"
-const messages = ["TIM", "ARIA","CONNOR","MICELIS"]
+const messages = ["TIM", "ARIA","CONNOR", "JANE ", "  TIM "]
 //var customMessages=true;
 //var randomCharacters = true;
 var pinkrain = 0;
@@ -125,56 +119,40 @@ var M = {
                 M.codes[column][0].velocity = codeVelocity;
                 M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
                 
-                // Choose one of the next two lines
-
-                // The old way of working - only 5 custom messages of unique length
-                M.ThisisCrap(codeLength, column, lettersLength)
-                
-                // The new Way - but doesn't quite work.... only last message appears.
-                //M.CheckArray(codeLength, messages, column, lettersLength)
+                M.CheckArray(codeLength, messages, column, lettersLength)
 
                 M.createCanvii(column);
                 M.codesCounter += 1;
             }
             M.createCodeLoop = setTimeout(M.createCode, randomInterval);
         },
-        ThisisCrap: function (codeLength, column, lettersLength)
-        {
-            if (codeLength === customMessages.length + 1) {
-                M.insertCustomMessages(codeLength, customMessages, column);
-            } else if (codeLength === customMessages1.length + 1) {
-                M.insertCustomMessages(codeLength, customMessages1, column);
-            } else if (codeLength === customMessages2.length + 1) {
-                M.insertCustomMessages(codeLength, customMessages2, column);
-            } else if (codeLength === customMessages3.length + 1) {
-                M.insertCustomMessages(codeLength, customMessages3, column);
-            } else if (codeLength === customMessages4.length + 1) {
-                M.insertCustomMessages(codeLength, customMessages4, column);
-            } else {
-                M.randomMessage(codeLength, column, lettersLength);
-            }  
-        }
-        ,
-        CheckArray: function (codeLength, array, column, lettersLength) {
+
+        CheckArray: function (codeLength, messages, column, lettersLength) {
             "use strict";
-            array.forEach(item => {
-                if (item.length == codeLength -1) {
+            var messageLengths = [];
+            messages.forEach(message => {messageLengths.push(message.length)});
+            messages.forEach(item => {
+                if (item.length == codeLength - 1) {
                     M.insertCustomMessages(codeLength, item, column);
-                } 
-                else {
-                    M.randomMessage(codeLength, column, lettersLength);
+                } else {
+                    M.randomMessage(codeLength, column, lettersLength, messageLengths);
                 }
             });
         },
         insertCustomMessages: function (codeLength, message, column) {
             "use strict";
+
             for (var i = 1; i <= codeLength; i = i + 1) {
                 var reverseString = message.split('').reverse().join('');
                 M.codes[column][i] = reverseString.substring(i - 1, i);
             }
+
         },
-        randomMessage:function (codeLength, column, lettersLength)  {
+        randomMessage:function (codeLength, column, lettersLength, messageLengths)  {
             "use strict";
+            if(messageLengths.includes(codeLength - 1)){
+                return;
+            }
             for (var i = 1; i <= codeLength; i = i + 1) {
                 var newLetter = M.randomFromInterval(0, (lettersLength - 1));
                 M.codes[column][i] = M.letters[newLetter];
