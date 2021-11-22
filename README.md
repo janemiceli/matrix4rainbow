@@ -27,3 +27,7 @@ Live examples:
 ```
 const messages = ["ALPHA", "BETA", "GAMMA"]
 ```
+
+ONE MORE THING: Screensavers and webpage wallpaper
+
+Also works with [Webpage Screensaver for Windows](https://github.com/janemiceli/web-page-screensaver-windows), [Webpage Screensaver for macOS](https://github.com/janemiceli/web-page-screensaver-macos), [Webpage Live Wallpaper](https://github.com/janemiceli/AutoWall)
