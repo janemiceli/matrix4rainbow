@@ -3,7 +3,7 @@ Matrix code rain
 
 **See live demo [here](https://janemiceli.github.io/matrix/)**
 
-Uses [stats.js](https://github.com/mrdoob/stats.js/) for the performance logging, and *Matrix* font is from [here](http://www.dafont.com/matrix-code-nfi.font).
+*Matrix* font is from [here](http://www.dafont.com/matrix-code-nfi.font).
 
 TO DO
 - Improve performance, aim for 60FPS with as many code columns as possible
