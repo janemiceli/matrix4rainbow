@@ -1,5 +1,7 @@
 const messages = ["TIM", "ARIA","CONNOR", "JANE ", "MICELI "]
 
+var pinkrain = 0;
+var orangerain = 25
 var yellowrain = 50;
 var greenrain = 104;
 var bluerain = 207;
