@@ -15,12 +15,12 @@ var M = {
             COL_WIDTH: 20,
             COL_HEIGHT: 25,
             VELOCITY_PARAMS: {
-                min: 1,
-                max: 15
+                min: 3,
+                max: 10
             },
             CODE_LENGTH_PARAMS: {
                 min: 4,
-                max: 30
+                max: 20
             }
         },
         animation: null,
