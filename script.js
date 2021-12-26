@@ -16,7 +16,7 @@ var M = {
             COL_HEIGHT: 25,
             VELOCITY_PARAMS: {
                 min: 1,
-                max: 5
+                max: 15
             },
             CODE_LENGTH_PARAMS: {
                 min: 4,
