@@ -169,24 +169,42 @@ var M = {
                 text = M.codes[i][j];
                 newCtx.globalCompositeOperation = 'source-over';
                 newCtx.font = '30px matrix-code';
-                if (j < 5) {
-                    newCtx.shadowColor = 'hsla(' + colorrain + ', 79%, 72%)';
+
+                if (j < codeLen*.14) {
+                    newCtx.shadowColor = 'hsla(' + pinkrain + ', 79%, 74%)';
                     newCtx.shadowOffsetX = 0;
                     newCtx.shadowOffsetY = 0;
                     newCtx.shadowBlur = 10;
-                    newCtx.fillStyle = 'hsla(' + colorrain + ', 79%, ' + (100 - (j * 5)) + '%, ' + strength + ')';
-                } else if (j > (codeLen - 4)) {
-                    fadeStrength = j / codeLen;
-                    fadeStrength = 1 - fadeStrength;
+                    newCtx.fillStyle = 'hsla(' + pinkrain + ', 79%, 74%, ' + strength + ')';
+                } else if (j < codeLen*.28) {
+                    newCtx.shadowColor = 'hsla(' + orangerain + ', 79%, 74%)';
                     newCtx.shadowOffsetX = 0;
                     newCtx.shadowOffsetY = 0;
-                    newCtx.shadowBlur = 0;
-                    newCtx.fillStyle = 'hsla(' + colorrain + ', 79%, 74%, ' + (fadeStrength + 0.3) + ')';
+                    newCtx.shadowBlur = 10;
+                    newCtx.fillStyle = 'hsla(' + orangerain + ', 79%, 74%, ' + strength + ')';
+                } else if (j < codeLen*.42) {
+                    newCtx.shadowColor = 'hsla(' + yellowrain + ', 79%, 74%)';
+                    newCtx.shadowOffsetX = 0;
+                    newCtx.shadowOffsetY = 0;
+                    newCtx.shadowBlur = 10;
+                    newCtx.fillStyle = 'hsla(' + yellowrain + ', 79%, 74%, ' + strength + ')';
+                } else if (j < codeLen*.54) {
+                    newCtx.shadowColor = 'hsla(' + greenrain + ', 79%, 74%)';
+                    newCtx.shadowOffsetX = 0;
+                    newCtx.shadowOffsetY = 0;
+                    newCtx.shadowBlur = 10;
+                    newCtx.fillStyle = 'hsla(' + greenrain + ', 79%, 74%, ' + strength + ')';
+                } else if (j < codeLen*.68) {
+                    newCtx.shadowColor = 'hsla(' + bluerain + ', 79%, 74%)';
+                    newCtx.shadowOffsetX = 0;
+                    newCtx.shadowOffsetY = 0;
+                    newCtx.shadowBlur = 10;
+                    newCtx.fillStyle = 'hsla(' + bluerain + ', 79%, 74%, ' + strength + ')';
                 } else {
                     newCtx.shadowOffsetX = 0;
                     newCtx.shadowOffsetY = 0;
                     newCtx.shadowBlur = 0;
-                    newCtx.fillStyle = 'hsla(' + colorrain + ', 79%, 74%, ' + strength + ')';
+                    newCtx.fillStyle = 'hsla(' + purplerain + ', 79%, 74%, ' + strength + ')';
                 }
                 newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
             }
