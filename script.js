@@ -1,4 +1,4 @@
-const messages = ["TIM", "ARIA","CONNOR", "JANE ", "MICELI "]
+const messages = ["TIM ", "ARIA ","CONNOR ", " JANE ", " MICELI "]
 
 var pinkrain = 0;
 var orangerain = 25
@@ -7,16 +7,13 @@ var greenrain = 104;
 var bluerain = 207;
 var purplerain = 255;
 
-var colorrain = bluerain;
-
-
 var M = {
         settings: {
             COL_WIDTH: 20,
             COL_HEIGHT: 25,
             VELOCITY_PARAMS: {
-                min: 3,
-                max: 10
+                min: 1,
+                max: 5
             },
             CODE_LENGTH_PARAMS: {
                 min: 4,
@@ -38,8 +35,6 @@ var M = {
         codesCounter: 0,
         init: function () {
             "use strict";
-            //M.c = document.getElementById('canvas');
-			//M.c = document.createElement('canvas');
             if (typeof(G_vmlCanvasManager) != 'undefined') {
                 M.c = G_vmlCanvasManager.initElement('canvas');
 			} else {
@@ -78,10 +73,8 @@ var M = {
         },
         loop: function () {
             "use strict";
-            //var requestAnimationFrame = function () { M.loop(); };
             M.animation = requestAnimationFrame(function () { M.loop(); });
             M.draw();
-            //stats.update();
         },
         draw: function () {
             "use strict";
@@ -95,34 +88,45 @@ var M = {
                     velocity = M.codes[i][0].velocity;
                     height = M.codes[i][0].canvas.height;
                     x = M.codes[i][0].position.x;
-                    y = M.codes[i][0].position.y - height;
                     c = M.codes[i][0].canvas;
                     ctx = c.getContext('2d');
-                    M.ctx.drawImage(c, x, y, M.settings.COL_WIDTH, height);
-                    if ((M.codes[i][0].position.y - height) < M.HEIGHT) {
-                        M.codes[i][0].position.y += velocity;
-                    } else {
-                        M.codes[i][0].position.y = 0;
+                    if ( i%2 ==0 ){
+                        y = M.codes[i][0].position.y + height;
+                        M.ctx.drawImage(c, x, y, M.settings.COL_WIDTH, height);
+                        if ((M.codes[i][0].position.y + height) < M.HEIGHT) {
+                            M.codes[i][0].position.y -= velocity;
+                        } else {
+                            M.codes[i][0].position.y = height;
+                        }
+                    }else{
+                        y = M.codes[i][0].position.y - height;
+                        M.ctx.drawImage(c, x, y, M.settings.COL_WIDTH, height);
+                        if ((M.codes[i][0].position.y - height) < M.HEIGHT) {
+                            M.codes[i][0].position.y += velocity;
+                        } else {
+                            M.codes[i][0].position.y = 0;
+                        }
                     }
                 }
             }
         },
         createCode: function () {
             "use strict";
-            if (M.codesCounter > M.COLUMNS) {
-                clearTimeout(M.createCodeLoop);
-                return;
-            }
+            clearTimeout(M.createCodeLoop);
             var randomInterval = M.randomFromInterval(0, 100), column = M.assignColumn(), codeLength = 0, i = 0, reverseString = "";
             if (column) {
                 var codeVelocity = (Math.random() * (M.settings.VELOCITY_PARAMS.max - M.settings.VELOCITY_PARAMS.min)) + M.settings.VELOCITY_PARAMS.min, lettersLength = M.letters.length, newLetter = 0;
                 codeLength = M.randomFromInterval(M.settings.CODE_LENGTH_PARAMS.min, M.settings.CODE_LENGTH_PARAMS.max);
-                M.codes[column][0].position = {'x': (column * M.settings.COL_WIDTH), 'y': 0};
-                M.codes[column][0].velocity = codeVelocity;
-                M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
-                
+                if ( M.codesCounter%2 == 0 ){
+                    M.codes[column][0].position = {'x': (column * M.settings.COL_WIDTH), 'y': 0};
+                    M.codes[column][0].velocity = codeVelocity;
+                    M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
+                }else{
+                    M.codes[column][0].position = {'x': (column * M.settings.COL_WIDTH), 'y': 0};
+                    M.codes[column][0].velocity = -codeVelocity;
+                    M.codes[column][0].strength = (M.codes[column][0].velocity * -1) / M.settings.VELOCITY_PARAMS.max;
+                }
                 M.CheckArray(codeLength, messages, column, lettersLength)
-
                 M.createCanvii(column);
                 M.codesCounter += 1;
             }
@@ -143,14 +147,12 @@ var M = {
         },
         insertCustomMessages: function (codeLength, message, column) {
             "use strict";
-
             for (var i = 1; i <= codeLength; i = i + 1) {
                 var reverseString = message.split('').reverse().join('');
                 M.codes[column][i] = reverseString.substring(i - 1, i);
             }
-
         },
-        randomMessage:function (codeLength, column, lettersLength, messageLengths)  {
+        randomMessage:function (codeLength, column, lettersLength, messageLengths){
             "use strict";
             if(messageLengths.includes(codeLength - 1)){
                 return;
@@ -165,48 +167,65 @@ var M = {
             var j, text, fadeStrength, codeLen = M.codes[i].length - 1, canvHeight = codeLen * M.settings.COL_HEIGHT, velocity = M.codes[i][0].velocity, strength = M.codes[i][0].strength, newCanv = document.createElement('canvas'), newCtx = newCanv.getContext('2d');
             newCanv.width = M.settings.COL_WIDTH;
             newCanv.height = canvHeight;
-            for (j = 1; j < codeLen; j += 1) {
-                text = M.codes[i][j];
-                newCtx.globalCompositeOperation = 'source-over';
-                newCtx.font = '30px matrix-code';
-
-                if (j < codeLen*.14) {
-                    newCtx.shadowColor = 'hsla(' + pinkrain + ', 79%, 74%)';
-                    newCtx.shadowOffsetX = 0;
-                    newCtx.shadowOffsetY = 0;
-                    newCtx.shadowBlur = 10;
-                    newCtx.fillStyle = 'hsla(' + pinkrain + ', 79%, 74%, ' + strength + ')';
-                } else if (j < codeLen*.28) {
-                    newCtx.shadowColor = 'hsla(' + orangerain + ', 79%, 74%)';
-                    newCtx.shadowOffsetX = 0;
-                    newCtx.shadowOffsetY = 0;
-                    newCtx.shadowBlur = 10;
-                    newCtx.fillStyle = 'hsla(' + orangerain + ', 79%, 74%, ' + strength + ')';
-                } else if (j < codeLen*.42) {
-                    newCtx.shadowColor = 'hsla(' + yellowrain + ', 79%, 74%)';
-                    newCtx.shadowOffsetX = 0;
-                    newCtx.shadowOffsetY = 0;
-                    newCtx.shadowBlur = 10;
-                    newCtx.fillStyle = 'hsla(' + yellowrain + ', 79%, 74%, ' + strength + ')';
-                } else if (j < codeLen*.54) {
-                    newCtx.shadowColor = 'hsla(' + greenrain + ', 79%, 74%)';
-                    newCtx.shadowOffsetX = 0;
-                    newCtx.shadowOffsetY = 0;
-                    newCtx.shadowBlur = 10;
-                    newCtx.fillStyle = 'hsla(' + greenrain + ', 79%, 74%, ' + strength + ')';
-                } else if (j < codeLen*.68) {
-                    newCtx.shadowColor = 'hsla(' + bluerain + ', 79%, 74%)';
-                    newCtx.shadowOffsetX = 0;
-                    newCtx.shadowOffsetY = 0;
-                    newCtx.shadowBlur = 10;
-                    newCtx.fillStyle = 'hsla(' + bluerain + ', 79%, 74%, ' + strength + ')';
-                } else {
-                    newCtx.shadowOffsetX = 0;
-                    newCtx.shadowOffsetY = 0;
-                    newCtx.shadowBlur = 0;
-                    newCtx.fillStyle = 'hsla(' + purplerain + ', 79%, 74%, ' + strength + ')';
+            text = M.codes[i][j];
+            newCtx.globalCompositeOperation = 'source-over';
+            newCtx.font = '30px matrix-code';
+            if (i%2==0){
+                for (j = 1; j < codeLen; j += 1) {
+                    text = M.codes[i][j];
+                    if (j < codeLen*.14) {
+                        newCtx.shadowColor = 'hsla(' + pinkrain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + pinkrain + ', 79%, 74%, ' + strength + ')';
+                    } else if (j < codeLen*.28) {
+                        newCtx.shadowColor = 'hsla(' + orangerain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + orangerain + ', 79%, 74%, ' + strength + ')';
+                    } else if (j < codeLen*.42) {
+                        newCtx.shadowColor = 'hsla(' + yellowrain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + yellowrain + ', 79%, 74%, ' + strength + ')';
+                    } else if (j < codeLen*.54) {
+                        newCtx.shadowColor = 'hsla(' + greenrain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + greenrain + ', 79%, 74%, ' + strength + ')';
+                    } else if (j < codeLen*.68) {
+                        newCtx.shadowColor = 'hsla(' + bluerain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + bluerain + ', 79%, 74%, ' + strength + ')';
+                    } else {
+                        newCtx.shadowColor = 'hsla(' + purplerain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + purplerain + ', 79%, 74%, ' + strength + ')';
+                    }
+                    newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
                 }
-                newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
+            }
+            else
+            {
+                for (j = codeLen; j > 1; j -= 1) {
+                    text = M.codes[i][j];
+                    if (j < codeLen*(.14)) {
+                        newCtx.shadowColor = 'hsla(' + pinkrain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + pinkrain + ', 79%, 74%, ' + strength + ')';
+                        //newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
+                    } else if (j < codeLen*(.28)) {
+                        newCtx.shadowColor = 'hsla(' + orangerain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + orangerain + ', 79%, 74%, ' + strength + ')';
+                        //newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
+                    } else if (j < codeLen*(.42)) {
+                        newCtx.shadowColor = 'hsla(' + yellowrain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + yellowrain + ', 79%, 74%, ' + strength + ')';
+                        //newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
+                    } else if (j < codeLen*(.54)) {
+                        newCtx.shadowColor = 'hsla(' + greenrain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + greenrain + ', 79%, 74%, ' + strength + ')';
+                        //newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
+                    } else if (j < codeLen*(.68)) {
+                        newCtx.shadowColor = 'hsla(' + bluerain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + bluerain + ', 79%, 74%, ' + strength + ')';
+                        //newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
+                    } else {
+                        newCtx.shadowColor = 'hsla(' + purplerain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + purplerain + ', 79%, 74%, ' + strength + ')';
+                        //newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
+                    }
+                    newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
+                } 
             }
             M.codes[i][0].canvas = newCanv;
         },
