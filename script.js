@@ -120,7 +120,7 @@ var M = {
                 M.codes[column][0].position = {'x': (column * M.settings.COL_WIDTH), 'y': 0};
                 M.codes[column][0].velocity = codeVelocity;
                 M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
-                M.CheckArray(codeLength, messages, column, lettersLength)
+                M.CheckArray(codeLength, messages, column, lettersLength);
                 M.createCanvii(column);
                 M.codesCounter += 1;
             }
