@@ -117,22 +117,15 @@ var M = {
             if (column) {
                 var codeVelocity = (Math.random() * (M.settings.VELOCITY_PARAMS.max - M.settings.VELOCITY_PARAMS.min)) + M.settings.VELOCITY_PARAMS.min, lettersLength = M.letters.length, newLetter = 0;
                 codeLength = M.randomFromInterval(M.settings.CODE_LENGTH_PARAMS.min, M.settings.CODE_LENGTH_PARAMS.max);
-                if ( M.codesCounter%2 == 0 ){
-                    M.codes[column][0].position = {'x': (column * M.settings.COL_WIDTH), 'y': 0};
-                    M.codes[column][0].velocity = codeVelocity;
-                    M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
-                }else{
-                    M.codes[column][0].position = {'x': (column * M.settings.COL_WIDTH), 'y': 0};
-                    M.codes[column][0].velocity = -codeVelocity;
-                    M.codes[column][0].strength = (M.codes[column][0].velocity * -1) / M.settings.VELOCITY_PARAMS.max;
-                }
+                M.codes[column][0].position = {'x': (column * M.settings.COL_WIDTH), 'y': 0};
+                M.codes[column][0].velocity = codeVelocity;
+                M.codes[column][0].strength = M.codes[column][0].velocity / M.settings.VELOCITY_PARAMS.max;
                 M.CheckArray(codeLength, messages, column, lettersLength)
                 M.createCanvii(column);
                 M.codesCounter += 1;
             }
             M.createCodeLoop = setTimeout(M.createCode, randomInterval);
         },
-
         CheckArray: function (codeLength, messages, column, lettersLength) {
             "use strict";
             var messageLengths = [];
@@ -200,29 +193,23 @@ var M = {
                 for (j = codeLen; j > 1; j -= 1) {
                     text = M.codes[i][j];
                     if (j < codeLen*(.14)) {
-                        newCtx.shadowColor = 'hsla(' + pinkrain + ', 79%, 74%)';
-                        newCtx.fillStyle = 'hsla(' + pinkrain + ', 79%, 74%, ' + strength + ')';
-                        //newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
-                    } else if (j < codeLen*(.28)) {
-                        newCtx.shadowColor = 'hsla(' + orangerain + ', 79%, 74%)';
-                        newCtx.fillStyle = 'hsla(' + orangerain + ', 79%, 74%, ' + strength + ')';
-                        //newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
-                    } else if (j < codeLen*(.42)) {
-                        newCtx.shadowColor = 'hsla(' + yellowrain + ', 79%, 74%)';
-                        newCtx.fillStyle = 'hsla(' + yellowrain + ', 79%, 74%, ' + strength + ')';
-                        //newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
-                    } else if (j < codeLen*(.54)) {
-                        newCtx.shadowColor = 'hsla(' + greenrain + ', 79%, 74%)';
-                        newCtx.fillStyle = 'hsla(' + greenrain + ', 79%, 74%, ' + strength + ')';
-                        //newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
-                    } else if (j < codeLen*(.68)) {
-                        newCtx.shadowColor = 'hsla(' + bluerain + ', 79%, 74%)';
-                        newCtx.fillStyle = 'hsla(' + bluerain + ', 79%, 74%, ' + strength + ')';
-                        //newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
-                    } else {
                         newCtx.shadowColor = 'hsla(' + purplerain + ', 79%, 74%)';
                         newCtx.fillStyle = 'hsla(' + purplerain + ', 79%, 74%, ' + strength + ')';
-                        //newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
+                    } else if (j < codeLen*(.28)) {
+                        newCtx.shadowColor = 'hsla(' + bluerain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + bluerain + ', 79%, 74%, ' + strength + ')';
+                    } else if (j < codeLen*(.42)) {
+                        newCtx.shadowColor = 'hsla(' + greenrain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + greenrain + ', 79%, 74%, ' + strength + ')';
+                    } else if (j < codeLen*(.54)) {
+                        newCtx.shadowColor = 'hsla(' + yellowrain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + yellowrain + ', 79%, 74%, ' + strength + ')';
+                    } else if (j < codeLen*(.68)) {
+                        newCtx.shadowColor = 'hsla(' + orangerain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + orangerain + ', 79%, 74%, ' + strength + ')';
+                    } else {
+                        newCtx.shadowColor = 'hsla(' + pinkrain + ', 79%, 74%)';
+                        newCtx.fillStyle = 'hsla(' + pinkrain + ', 79%, 74%, ' + strength + ')';
                     }
                     newCtx.fillText(text, 0, (canvHeight - (j * M.settings.COL_HEIGHT)));
                 } 
